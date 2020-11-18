@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function display_menu_items(menuItems) {
     let curated_menu = menuItems.map(function (individual_item) {
         
-        //render individual menuitem
+        //rend er individual menuitem
         return `<article class="menu-item">
                     <img src=${individual_item.img} alt=${individual_item.title} class="photo" />
                     <div class="item-info">
