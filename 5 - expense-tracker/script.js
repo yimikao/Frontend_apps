@@ -10,7 +10,7 @@ const amount_space = document.getElementById('amount');
 //MODEL
 let transactions = [];
 
-
+console.log(transactions);
 
 //CONTROLLER
 
