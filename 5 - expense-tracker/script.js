@@ -8,7 +8,13 @@ const text_space = document.getElementById('text');
 const amount_space = document.getElementById('amount');
 
 //MODEL
-let transactions = [];
+// let transactions = [];
+const localStorageTransactions = JSON.parse(
+  localStorage.getItem('transactions')
+);
+
+let transactions =
+  localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 console.log(transactions);
 
@@ -23,7 +29,7 @@ function addTransactionDOM(transaction) {
 
   item.innerHTML = `
     ${transaction.text}<span>${transaction.amount}</span>
-    <button class="delete-btn" onclick="removeTransaction()">x</button>
+    <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
     `
   history_list.appendChild(item);
 }
@@ -48,11 +54,14 @@ function updateValues() {
 }
 
 function removeTransaction(id) {
-  
+  transactions = transactions.filter(transaction => transaction.id !== id);
+  updateLocalStorage();
+
+  init();
 }
 
-function addTransaction() {
-  
+function addTransaction(e) {
+  e.preventDefault();
   if (text_space.value.trim() === '' || amount_space.value.trim() === '') {
     alert('Please add a text and amount')
   } else {
@@ -67,5 +76,33 @@ function addTransaction() {
     addTransactionDOM(transaction);
 
     updateValues();
+
+    updateLocalStorage();
+
+    text.value = '';
+    amount.value = '';
   }
 }
+
+
+
+
+
+
+
+
+function updateLocalStorage() {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+// Init app
+function init() {
+  list.innerHTML = '';
+
+  transactions.forEach(addTransactionDOM);
+  updateValues();
+}
+
+init();
+
+form.addEventListener('submit', addTransaction);
