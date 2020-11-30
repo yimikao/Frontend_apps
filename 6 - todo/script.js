@@ -3,7 +3,7 @@ const updated_text = document.getElementById("todo-update");
 const todo_history = document.getElementById('todo-list');
 const check_space = document.getElementById('check-box');
 const text_space = document.getElementById('text-space');
-// const add_todo_btn = document.getElementById("submit-btn");
+const add_todo_btn = document.getElementById("submit-btn");
 const form = document.getElementById('form');
 
 //MODEL
