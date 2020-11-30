@@ -1,6 +1,7 @@
 //VIEW
-const update_text = document.getElementById("todo-update");
+const updated_text = document.getElementById("todo-update");
 const todo_history = document.getElementById('todo-list');
+const check_space = document.getElementById('check-box');
 const text_space = document.getElementById('text-space');
 // const add_todo_btn = document.getElementById("submit-btn");
 const form = document.getElementById('form');
@@ -33,6 +34,7 @@ function addTodo(e) {
     
     addTodoDOM(todo);
     updateLocalStorage();
+    updateText(todos)
 
     text_space.value = '';
 
@@ -68,12 +70,21 @@ function removeTodo(id) {
 
 function initializeApp() {
     todo_history.innerHTML = '';
+    updateText(todos)
 
     todos.forEach(addTodoDOM);
 }
 
 initializeApp();
 
+function updateText(data) {
+    updated_text.innerHTML = `
+        You have ${data.length} todos left
+    ` 
+}
+
 
 form.addEventListener('submit', addTodo);
-// console.log(todos);
+
+check_space.addEventListener('check', removeTodo);
+
