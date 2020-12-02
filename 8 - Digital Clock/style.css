@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: "Space Grotesk";
+    font-weight: 900;
+}
+
+#banner {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 5em;
+
+    
+}
+
+#clock {
+    text-align: center;
+    font-size: 5em;
+}
