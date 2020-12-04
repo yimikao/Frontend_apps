@@ -43,7 +43,7 @@ function addTodo(e) {
 function addTodoDOM(todo) {
     const todo_item = document.createElement('li');
     todo_item.innerHTML = `
-            <input type="checkbox" class="check-box">${todo.text}</input>
+            <inpu type="checkbox" class="check-box">📌 ${todo.text}</inpu>
             <span><a href="" onclick= "removeTodo(${todo.id})">x</a></span>
             
     `;
